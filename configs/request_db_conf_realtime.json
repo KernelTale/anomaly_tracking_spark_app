@@ -1,0 +1,84 @@
+{
+"Logon Activity" : {
+"Windows" : {
+"host":"msk01-as01.domain.local",
+"port":"1337",
+"user":"spark_service_acc",
+"password":"passwd",
+"database":"trends_db",
+"tables": {"view_trends_computer_logon_logoff": {}
+}
+},
+
+"Unix" : {
+"host":"msk01-as01.domain.local",
+"port":"1337",
+"user":"spark_service_acc",
+"password":"passwd",
+"database":"test_db",
+"tables": {
+"proto_trends_computer_logon_logoff": {
+"event_class_id": "USER_AUTH"
+}
+}
+}
+},
+"VPN Activity": {
+"NGate": {
+"host":"msk01-as01.domain.local",
+"port":"1337",
+"user":"spark_service_acc",
+"password":"passwd",
+"database":"trends_db",
+"tables": {
+"view_trends_ngate": {
+"operation": ["Access granted", "Access denied"]
+}
+} 
+}
+
+},
+"User Account Management": {
+"Microsoft": {
+"host":"msk01-as01.domain.local",
+"port":"1337",
+"user":"spark_service_acc",
+"password":"passwd",
+"database":"trends_db",
+"tables": {
+"view_trends_action_with_user_account": {},
+"view_trends_ou_change": {}
+} 
+}
+
+},
+"Security Group Management": {
+"Microsoft": {
+"host":"msk01-as01.domain.local",
+"port":"1337",
+"user":"spark_service_acc",
+"password":"passwd",
+"database":"trends_db",
+"tables": {
+"view_trends_action_with_group": {},
+"view_trends_action_with_user_group": {}
+} 
+}
+
+},
+"Email Traffic for MS Exchange": {
+"MT Microsoft": {
+"host":"msk01-as01.domain.local",
+"port":"1337",
+"user":"spark_service_acc",
+"password":"passwd",
+"database":"trends_db",
+"tables": {
+"view_trends_mt_mail": {
+"event_id": ["RECEIVED", "SEND"]
+}
+} 
+}
+
+}
+}
