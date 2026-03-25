@@ -1,0 +1,2 @@
+anomaly_class;rvision_anomaly_code;name;desc;type;fields;target_field;req_fields;write_database;write_table
+Email Traffic for MS Exchange;ET1;Нестандартный получатель;Ранее пользователь 1 не коммуницировал с пользователем 2.;Списочная;sender_address, recipient_address;sender_address;sender_address, server_hostname, recipient_address, message_id, client_hostname, event_id, device_product;ueba;host_sgm_anomaly_test
