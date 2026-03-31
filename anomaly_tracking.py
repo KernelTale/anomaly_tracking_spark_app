@@ -83,14 +83,14 @@ for anomaly_class_id in anomalies_class_pool:
 
 # ANALYSE DATAFRAMES
 
-for anomaly_id in anomalies_class_pool.get(anomaly_class_id):
-    anomaly_properties = anomalies_raw.get(anomaly_id)
-    match_function_call(df_last, df_one_month, **anomaly_properties).withColumnRenamed("first_occurrence", "timestamp").orderBy("timestamp", acsending=False).show(truncate=False) 
-#match_function_call(df_last, df_one_month, **anomaly_properties).withColumn('uuid', get_uuid()).withColumnRenamed("first_occurrence", "timestamp")\
-#.writeTo('{}.{}.{}'.format(\
-#((db_properties_write.get(anomaly_class_id)).get(db_properties_prod)).get("database") + suffix,\
-#((db_properties_write.get(anomaly_class_id)).get(db_properties_prod)).get("database"),\
-#list((((db_properties_write.get(anomaly_class_id)).get(db_properties_prod)).get("tables")).keys())[0])).append()
-#print('========================================={}/{}==========================================\n{}'.format(anomaly_class_id, db_properties_prod, db_properties_write.get(anomaly_class_id)))
-df_last.drop()
-df_one_month.drop()
+        for anomaly_id in anomalies_class_pool.get(anomaly_class_id):
+            anomaly_properties = anomalies_raw.get(anomaly_id)
+            match_function_call(df_last, df_one_month, **anomaly_properties).withColumnRenamed("first_occurrence", "timestamp").orderBy("timestamp", acsending=False).show(truncate=False) 
+        #match_function_call(df_last, df_one_month, **anomaly_properties).withColumn('uuid', get_uuid()).withColumnRenamed("first_occurrence", "timestamp")\
+        #.writeTo('{}.{}.{}'.format(\
+        #((db_properties_write.get(anomaly_class_id)).get(db_properties_prod)).get("database") + suffix,\
+        #((db_properties_write.get(anomaly_class_id)).get(db_properties_prod)).get("database"),\
+        #list((((db_properties_write.get(anomaly_class_id)).get(db_properties_prod)).get("tables")).keys())[0])).append()
+        #print('========================================={}/{}==========================================\n{}'.format(anomaly_class_id, db_properties_prod, db_properties_write.get(anomaly_class_id)))
+        df_last.drop()
+        df_one_month.drop()
