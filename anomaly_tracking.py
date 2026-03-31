@@ -57,12 +57,12 @@ for idx in anomalies_raw:
     else:
         anomalies_class_pool.update({anomaly_class_id : list([int(idx)])})
         # READ INTO DATAFRAMES
-    for anomaly_class_id in anomalies_class_pool:
-        #connection goes at this loop
-        req_fields = [(anomalies_raw.get(idx)).get("req_fields") for idx in anomalies_class_pool.get(anomaly_class_id)]
-        req_fields = set([field for liste in req_fields for field in liste])
-        fields = [(anomalies_raw.get(idx)).get("fields") for idx in anomalies_class_pool.get(anomaly_class_id)]
-        fields = set([field for liste in fields for field in liste])
+for anomaly_class_id in anomalies_class_pool:
+    #connection goes at this loop
+    req_fields = [(anomalies_raw.get(idx)).get("req_fields") for idx in anomalies_class_pool.get(anomaly_class_id)]
+    req_fields = set([field for liste in req_fields for field in liste])
+    fields = [(anomalies_raw.get(idx)).get("fields") for idx in anomalies_class_pool.get(anomaly_class_id)]
+    fields = set([field for liste in fields for field in liste])
     for db_properties_prod in db_properties_realtime.get(anomaly_class_id):
         props = {"prod_name": db_properties_prod,
         "db_properties_realtime": (db_properties_realtime.get(anomaly_class_id)).get(db_properties_prod),
@@ -75,11 +75,11 @@ for idx in anomalies_raw:
             if db_properties_month.get(anomaly_class_id).get("Universal"):
                 props.update({ "sup_catalogue_id": ((db_properties_month.get(anomaly_class_id)).get("Universal")).get("database") + suffix,
                             "db_properties_month":(db_properties_month.get(anomaly_class_id).get("Universal"))
-    })
+        })
 
-df_last, df_one_month = read_from_db(props, spark)
-df_one_month.show(5)
-df_last.show()
+        df_last, df_one_month = read_from_db(props, spark)
+        df_one_month.show(5)
+        df_last.show()
 
 # ANALYSE DATAFRAMES
 
